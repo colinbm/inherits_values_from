@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
   attr_accessible :works_saturday
   belongs_to :company
   
-  include InheritsValuesFrom
   inherits_values_from :company, [:works_saturday]
   
 end
@@ -55,7 +54,6 @@ class User < ActiveRecord::Base
   attr_accessible :works_saturday
   belongs_to :company
 
-  include InheritsValuesFrom
   inherits_values_from :company, { :works_saturday => :employees_work_saturday }
 
 end
