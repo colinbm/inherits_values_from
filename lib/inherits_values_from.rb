@@ -2,14 +2,13 @@ require 'inherits_values_from/version.rb'
 
 module InheritsValuesFrom
   
-  def self.included(base)
-    base.extend ClassMethods
-  end
+  extend ActiveSupport::Concern
   
   module ClassMethods
     
     def inherits_values_from(model, values)
       values.each do |local, far|
+        far = local if far.nil? # It's an array
         define_method(local) do
           if self[local].nil?
             self.method(model).call[far]
@@ -23,3 +22,5 @@ module InheritsValuesFrom
   end
   
 end
+
+ActiveRecord::Base.send(:include, InheritsValuesFrom)
