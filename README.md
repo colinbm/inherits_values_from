@@ -62,3 +62,14 @@ class Company < ActiveRecord::Base
   attr_accessible :employees_work_saturday
 end
 ```
+
+Todo
+----
+
+**Tests**
+
+I think I need a full dummy rails app in order to test this properly. It's planned.
+
+
+
+  
